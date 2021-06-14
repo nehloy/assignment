@@ -1,0 +1,55 @@
+<div class="container">
+  <form>
+    <hr class="">
+    <div class="main">
+      <div class="input-group mb-3">
+        <input #isoCode minlength="2" class="form-control" placeholder="Enter ISO code" maxlength="3" type="text"
+          aria-label="Recipient's username" aria-describedby="basic-addon2" (click)="clearMessage()"
+          (focus)="clearMessage()">
+        <div class="input-group-append">
+          <button (click)="fetchCountryDetails(isoCode.value)" type="button" class="btn btn-primary">Search</button>
+        </div>
+      </div>
+    </div>
+    <p class="text-danger">{{submitMessage}}</p>
+    <div class="form-group">
+      <ng-container *ngFor=" let item of lstcountry">
+        <table class="table table-bordered table-hover">
+          <tbody>
+            <tr>
+              <th>Country Name</th>
+
+              <th>Capital City</th>
+              <th>Longitude</th>
+              <th>Latitude</th>
+            </tr>
+            <tr>
+              <td>{{item.name}}</td>
+              <td>{{item.capitalCity}}</td>
+              <td>{{item.longitude}}</td>
+              <td>{{item.latitude}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="table table-bordered table-hover table-width">
+          <tbody>
+            <tr>
+              <th colspan="3">Region</th>
+            </tr>
+            <tr>
+              <th>Id</th>
+              <th>ISO Code</th>
+              <th>Value</th>
+            </tr>
+            <tr>
+              <td>{{item.region?.id}}</td>
+              <td>{{item.region?.iso2code}}</td>
+              <td>{{item.region?.value}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </ng-container>
+    </div>
+
+  </form>
+</div>

@@ -4,15 +4,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { countryApiServices } from './services/countryAPI';
+import { CountryListComponent } from './components/country-search/country-list.component';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CountryListComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [countryApiServices],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
